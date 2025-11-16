@@ -25,7 +25,8 @@ products = sorted(df['unique_id'].unique())
 with st.sidebar:
     st.header("Controls")
     selected = st.multiselect("Select products to show", products, default=[products[0]])
-    horizon = st.slider("Forecast horizon (days)", 1, 28, 7)
+    # Restrict forecasts to at most 7 days to match notebook behaviour
+    horizon = st.slider("Forecast horizon (days)", 1, 7, 7)
     show_metrics = st.checkbox("Show simple evaluation (MAE) using last horizon", value=True)
 
 if not selected:
